@@ -227,7 +227,7 @@ plt.show()
 {% endhighlight %}
 
 
-{ highlight cpp}
+{% highlight cpp %}
 #include <iostream>
  
 using namespace std;
@@ -266,4 +266,4 @@ int main(void) {
 
    return 0;
 }
-{ endhighlight }
+{% endhighlight %}
