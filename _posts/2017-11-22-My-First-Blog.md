@@ -186,7 +186,7 @@ $ source ~/.zshrc
 
 ## Test code of rough highlighting
 
-```
+{% highlight python %}
 import numpy as np
 import matplotlib.pyplot as plt
 import urllib.request as urlReq
@@ -224,4 +224,4 @@ ax1.set_xlabel('Time (h)')
 ax1.set_title('UpIOT Info')
 
 plt.show()
-```
+{% endhighlight %}
