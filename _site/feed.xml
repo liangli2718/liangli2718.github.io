@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom">
+	<channel>
+		<title>heheda</title>
+		<description>description</description>
+		<link>/</link>
+		<atom:link href="/" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Cola Chicken Wings</title>
+				<description>&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+
+&lt;p&gt;做一份自己喜欢的可乐鸡翅。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://openmindclub.qiniudn.com/Azeril/MarkdownActionPicAddTemplateColaChickenWings.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;用料&quot;&gt;用料&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;用料&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;用量&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡翅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8 个&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;可乐&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1 易拉罐&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;盐&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;适量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;料酒&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3 勺&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;老抽&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2 勺&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;生抽&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2 勺&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;生姜片&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;适量&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;做法&quot;&gt;做法&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在生鸡翅上划刀，用一勺老抽，两勺料酒腌至少两小时&lt;/li&gt;
+  &lt;li&gt;锅中放水和葱姜片，鸡翅下锅煮开，捞出，用冷水冲洗掉浮沫，沥干&lt;/li&gt;
+  &lt;li&gt;小火，锅中放一点底油，将鸡翅煎成金黄色&lt;/li&gt;
+  &lt;li&gt;一听可乐、一大勺料酒、一勺老抽，两勺生抽，加一点盐。加半支桂皮会更有风味。
+炖至汤汁还剩一碗水的量时，再尝尝咸淡，如需加盐再加少量盐，这样不容易出差错。&lt;/li&gt;
+  &lt;li&gt;炖至汤汁收浓，浓度看图，基本所有汁都裹在鸡翅上了，只剩约三勺汤汁了，出锅&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;tips&quot;&gt;Tips&lt;/h2&gt;
+
+&lt;p&gt;小贴士&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;料酒腌制；
+    &lt;ul&gt;
+      &lt;li&gt;去腥&lt;/li&gt;
+      &lt;li&gt;更入味&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;焯水，撇去浮沫并捞出，然后用冷水冲干净，沥干；
+    &lt;ul&gt;
+      &lt;li&gt;将鸡翅中的血水煮掉&lt;/li&gt;
+      &lt;li&gt;冷水冲令鸡皮更爽脆，口感更好&lt;/li&gt;
+      &lt;li&gt;沥干是为防止煎鸡翅时溅油&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;汤汁收汁到末尾，速度会比先前快，所以差不多时，要盯着点儿，免得功亏一篑；&lt;/li&gt;
+  &lt;li&gt;可乐，想甜一点选百事，不太喜欢甜就可口可乐。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Sat, 20 Aug 2016 00:00:00 +0200</pubDate>
+				<link>/Cola-Chicken-Wings.html</link>
+				<guid isPermaLink="true">/Cola-Chicken-Wings.html</guid>
+			</item>
+		
+	</channel>
+</rss>
