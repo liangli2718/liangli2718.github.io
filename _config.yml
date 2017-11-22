@@ -3,11 +3,11 @@ title: heheda
 header-img: "img/autumn2.jpg"
 tagline: "tagline"  
 description: "description"  
-baseurl: "http://liangli2718.github.io"
+baseurl:
 # url: "http://azeril.me"  
 # url: "http://localhost:4000"
 
-url: http://liangli2718.github.io
+url: "http://liangli2718.github.io"
 # enforce_ssl: 
 
 # About/contact
