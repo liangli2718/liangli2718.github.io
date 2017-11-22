@@ -32,7 +32,7 @@ github_username: liangli2718
 markdown: kramdown
 kramdown:
   input: GFM
-highlighter: rouge
+highlighter: pygments
 
 gems: 
 - jekyll-gallery-generator
