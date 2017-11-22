@@ -1,8 +1,8 @@
 # Personal Blog via Github Pages
 
-## Acknowledgement
+## Acknowledgment
 
-The blog used the following tools/projects:
+This blog uses the following tools/projects:
 
 * [Github](https://github.com/), This blog's host and VCS.
 * [Jekyll](https://github.com/jekyll/jekyll), Jekyll is a blog-aware, static site generator in Ruby.
