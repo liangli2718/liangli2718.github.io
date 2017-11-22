@@ -184,3 +184,44 @@ $ source ~/.zshrc
 * [Mac OS 基本环境配置命令集 - Microdust](http://azeril.me/blog/OS-Basic-Configure.html)  
 * [wting/autojump - GitHub](https://github.com/wting/autojump)
 
+## Test code of rough highlighting
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+import urllib.request as urlReq
+import json
+
+jsonStr=urlReq.urlopen('ADDRESS').read().decode('utf-8')
+
+decodedObj = json.loads(jsonStr)
+
+vATM = np.array(decodedObj['vATM'])
+vT = np.array(decodedObj['vT'])
+
+vLen = len(vATM)
+print('Length of data:',vLen)
+print('Std variation of T:', vT.std())
+
+xTicks = np.linspace(-6,0,vLen+1)
+xTicks = np.delete(xTicks,0)
+
+f = plt.figure()
+
+ax1 = f.add_axes((0.1,0.1,0.8,0.8))
+l1 = ax1.plot(xTicks, vT,'b-*', linewidth=2.5)
+ax1.tick_params('y', colors='b')
+ax1.grid(axis='both')
+ax1.set_xlim(xTicks[0],xTicks[vLen-1])
+
+
+ax2 = ax1.twinx()
+l2 = ax2.plot(xTicks, vATM,'r-o', linewidth=2.5)
+ax2.tick_params('y', colors='r')
+
+ax2.legend(l1+l2,('Temperature','ATM Pressure'),loc=0)
+ax1.set_xlabel('Time (h)')
+ax1.set_title('UpIOT Info')
+
+plt.show()
+```
