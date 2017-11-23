@@ -1,8 +1,8 @@
 # Site settings
-title: heheda 
+title: heheda
 header-img: "img/autumn2.jpg"
-tagline: "tagline"  
-description: "description"  
+tagline: Just another engineer
+description:  
 baseurl: https://liangli2718.github.io
 # url: "http://localhost:4000"
 
@@ -11,9 +11,9 @@ enforce_ssl: https://liangli2718.github.io
 
 # About/contact
 owner: 
-  name: "Liang Li"
+  name: Liang Li
   email: liangli2718@gmail.com
-  bio: "bio here"
+  bio:
 
 # Data
 gavatar: https://dreamofbook.qiniudn.com/Az..png
