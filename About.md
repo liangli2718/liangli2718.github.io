@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-description: "This is a test about page"
+description: "Is there any engineer who doesn't want to change the world?"
 header-img: "img/plane.jpg"
 ---
 
@@ -9,7 +9,7 @@ header-img: "img/plane.jpg"
     <p><img src="http://dreamofbook.qiniudn.com/Zero.png" align="center"></p>
 </center>
 
-This is a test bio
+TODO: add bio here.
 
 
 > Life is short, use python.
