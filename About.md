@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-description: "Is there any engineer who doesn't want to change the world?"
+description: "People get old when they stopped exploring."
 header-img: "img/plane.jpg"
 ---
 
