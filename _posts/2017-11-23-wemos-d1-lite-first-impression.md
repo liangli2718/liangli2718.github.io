@@ -34,4 +34,15 @@ This extension board has a SHT-30 sensor chip on it which can measure the temper
 This shield provide a monochromatic 0.66 inch OLED screen with 2 extra push buttons on each side. The 0.66" areas includes 64x48 pixels.
 The OLED is controlled by SSD1306 driver IC and connected via I2C to the core board.
 
-# Size Comparison
+# Final Look and Size Comparison
+>TODO: add photo
+
+The above is the final look of the stack. From bottom to top are the battery shield, D1 Lite core board, SHT-30 sensor and the OLED display. I didn't use the pluggable pin header because they occupy too much vertical space between boards which cancels out the benefit of this tiny stackable solution (also because I simply have too many ESP82xx board... so I don't need to make this one detachable that I can reuse them later.).
+
+In the end, it becomes a full fledged sensor node in a cute cubic form factor. Just look at the image and you know how small it is compared to the original Arduino board or even the ESP8266 core board.
+
+What is still to be added is a small lithium-ion battery on the bottom and a 3D printed housing which I will do in later post.
+
+# Demo Application
+>TODO: add demo code and gif.
+
