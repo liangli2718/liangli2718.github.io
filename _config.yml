@@ -1,7 +1,7 @@
 # Site settings
 title: heheda
 header-img: "img/autumn2.jpg"
-tagline: Just another engineer
+tagline:
 description:  
 baseurl: https://liangli2718.github.io
 # url: "http://localhost:4000"
@@ -16,8 +16,8 @@ owner:
   bio:
 
 # Data
-gavatar: https://dreamofbook.qiniudn.com/Az..png
-favicon: img/favicon.ico
+gavatar:
+favicon:
 
 # douban_username:
 # twitter_username: 
