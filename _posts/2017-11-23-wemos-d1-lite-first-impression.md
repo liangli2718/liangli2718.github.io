@@ -65,8 +65,11 @@ Let's stop here, I will write more on this cute cube when I have more experience
 
 # References
 [ESP8285 news](https://hackaday.com/2016/06/21/espressif-releases-esp8266-killer/)
+
 [WEMOS wiki site](https://wiki.wemos.cc/start)
+
 [WEMOS github](https://github.com/wemos?tab=repositories)
+
 [Sparkfun OLED breakout github](https://github.com/sparkfun/Micro_OLED_Breakout/tree/V_1.0)
 
 
