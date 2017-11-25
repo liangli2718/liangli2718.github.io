@@ -37,24 +37,26 @@ This shield provide a monochromatic 0.66 inch OLED screen with 2 extra push butt
 The OLED is controlled by SSD1306 driver IC and connected via I2C to the core board.
 
 # Final Look and Size Comparison
->TODO: add photo
+![stack](/img/2017-11-23/stack.jpg)
 
 The above is the final look of the stack. From bottom to top are the battery shield, D1 Mini Lite core board, SHT-30 sensor and the OLED display. I didn't use the pluggable pin header because they occupy too much vertical space between boards which cancels out the benefit of this tiny stackable solution (also because I simply have too many ESP82xx board... so I don't need to make this one detachable that I can reuse them later.).
 
 In the end, it becomes a full fledged sensor node in a cute cubic form factor. Just look at the image and you know how small it is compared to the original Arduino board or even the ESP8266 core board.
+
+![compare1](/img/2017-11-23/esp8266.jpg)
+
+![compare2](/img/2017-11-23/3boards.jpg)
 
 What is still to be added is a small lithium-ion battery on the bottom and a 3D printed housing which I will do in later post.
 
 # Demo Application
 To test the whole assembly, I used two applications. One is the stock example from [SparkFun OLED breakout](https://github.com/sparkfun/Micro_OLED_Breakout/tree/V_1.0/Libraries/Arduino/examples/MicroOLED_Cube).
 
->TODO: add gif
+![cube](/img/2017-11-23/cubeapp.jpg)
 
 The other one is to test both the SHT-30 sensor and the OLED which is from the example of [WEMOS SHT3X library](https://github.com/wemos/WEMOS_SHT3x_Arduino_Library/tree/master/examples/SHT30_OLED_test).
 
 I modified the code a bit to make it work with SparkFun lib.
-
->TODO: add gif
 
 # Notes
 When uploading program to the D1 Mini Lite, I noticed that I need to press down the reset button at pretty precise time just before the IDE shows "Uploading..." message otherwise the communication will fail.
