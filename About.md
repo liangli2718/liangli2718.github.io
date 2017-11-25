@@ -2,7 +2,7 @@
 layout: page
 title: "About"
 description: "People get old when they stop exploring."
-header-img: "img/plane.jpg"
+header-img: "img/about.jpg"
 ---
 
 # About me
