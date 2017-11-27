@@ -1,4 +1,7 @@
 # Personal Blog via Github Pages
+This repo stores the source code of the blog.
+
+This blog is alive at https://liangli2718.github.io/
 
 ## Acknowledgment
 
