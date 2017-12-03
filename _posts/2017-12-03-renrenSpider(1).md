@@ -29,14 +29,14 @@ description:
 对于人人网来说，要获取数据，首先要合法登陆。当然可以先抓包分析普通登陆的整个过程，然后使用python发送http request模拟这个过程进行登录，不过登录部分不是重点，所以我们直接使用合法登陆产生的cookie对人人网进行访问。
 用自己的账号登陆人人网，并用Fiddler对整个过程抓包（也可以使用Chrome自带的Developer Tool)，可以得到一个cookie。有了cookie我们就可以在一段时间内免登录访问人人的页面了。
 
-![find_cookie](/img/2017-12-03/find_cookie.png)
+[![find_cookie](/img/2017-12-03/find_cookie.png)](/img/2017-12-03/find_cookie.png)
 
 如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了“Cookie: ”这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是key1=value1;key2=value2;...这种形式就好。
 
 # 获取自己的好友列表
 要抓取自己好友的各种信息，首先要获得自己的好友列表。我们先去【个人主页】->【我的好友】查看自己的好友列表。
 使用Fiddler对这个页面进行抓包，获得以下内容
-![friendList](/img/2017-12-03/friendList.png)
+[![friendList](/img/2017-12-03/friendList.png)](/img/2017-12-03/friendList.png)
 
 可以看到浏览器对friend.renren.com/managefriends发出了请求，之后跳转到friend.renren.com/groupsdata。groupsdata其实一个javascript代码片段，我们把这个数据保存为friendList.txt
 
@@ -62,7 +62,7 @@ var friends_manage_groups =
 和中间的两行注释,以及文件末尾的分号，让整个文件之剩下{ "data": ...}，这就使它变成了一个无名的js对象，或者说是一个json文件。
 
 为了测试处理过后的好友列表确实能用json解析器解析，我们把所有内容copy到一个在线的json解析器里看看：
-![online_parse](/img/2017-12-03/online_parse.png)
+[![online_parse](/img/2017-12-03/online_parse.png)](/img/2017-12-03/online_parse.png)
 
 确实可以解析！这样我们就可以在python里使用这个完整的好友列表了！
 
