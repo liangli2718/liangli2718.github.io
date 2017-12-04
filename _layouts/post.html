@@ -28,6 +28,7 @@ layout: default
         </div>
     </div>
 
+    <!-- gitment css -->
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 </header>
 
@@ -40,10 +41,7 @@ layout: default
                 {{ content }}
 
                 <hr>
-
-
-                <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International License</a>.
-
+                  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International License</a>.
                 <hr>
 
                 <ul class="pager">
@@ -58,7 +56,8 @@ layout: default
                     </li>
                     {% endif %}
                 </ul>
-
+                
+                <!-- gitment comment box div -->
                 <div id="gitment_comment"></div>
             </div>
         </div>
@@ -91,8 +90,9 @@ layout: default
     })
 </script>
 
+<!-- gitment js -->
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-
+<!-- render gitment comment box -->
 <script>
 const gitment = new Gitment({
   //id: 'empty', // optional
