@@ -31,7 +31,7 @@ description:
 
 [![find_cookie](/img/2017-12-03/find_cookie.png)](/img/2017-12-03/find_cookie.png)
 
-如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了“Cookie: ”这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是key1=value1;key2=value2;...这种形式就好。
+如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了`“Cookie: ”`这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是`key1=value1;key2=value2;...`这种形式就好。
 
 使用这个cookie也非常简单，只需要在发送请求的时候添加cookie就可以了：
 
@@ -52,7 +52,7 @@ response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
 使用Fiddler对这个页面进行抓包，获得以下内容
 [![friendList](/img/2017-12-03/friendList.png)](/img/2017-12-03/friendList.png)
 
-可以看到浏览器对friend.renren.com/managefriends发出了请求，之后跳转到friend.renren.com/groupsdata。groupsdata其实一个javascript代码片段，我们把这个数据保存为friendList.txt
+可以看到浏览器对friend.renren.com/managefriends发出了请求，之后跳转到friend.renren.com/groupsdata。`groupsdata`其实一个javascript代码片段，我们把这个数据保存为`friendList.txt`
 
 {% highlight javascript %}
 var user={star: true, vip :false};
@@ -77,7 +77,7 @@ var friends_manage_groups = {
 
 不难发现，自己的所有好友都在一个javascript对象里。如果想使用python自动获取这个列表，可以使用requests库对http://friend.renren.com/groupsdata发一个GET请求，然后处理返回的js代码片，之后获得这个列表。鉴于这个页面一次就返回了所有好友，而不是分批返回，那我就干脆直接copy-paste好友列表到一个文本文件之后再用。
 
-因为是js对象，自然想到使用json解析。先对这个friendList.txt进行一些预处理：删掉
+因为是js对象，自然想到使用json解析。先对这个`friendList.txt`进行一些预处理：删掉
 var user={star: true, vip :false};   
 var friends_manage_groups =    
 和中间的两行注释,以及文件最末尾的分号，让整个文件只剩下{ "data": ...}，这就使它变成了一个无名的js对象，或者说是一个json文件。
@@ -88,11 +88,11 @@ var friends_manage_groups =
 确实可以解析！这样我们就可以在python里使用这个完整的好友列表了！
 
 # 进一步挖掘
-从上面的json结构可以得到一些有用的信息：好友的fid(friend identifier?)，显示名字fname(friend name?)，头像图片地址large_url/tiny_url等。
+从上面的json结构可以得到一些有用的信息：好友的`fid`(friend identifier?)，显示名字`fname`(friend name?)，头像图片地址`large_url/tiny_url`等。
 
-fid是一个人人网用户的唯一标识符。fid的重要之处在于在我们之后需要获取相册信息，相册内容，状态内容甚至评论的时候，都需要fid来构造相应的url。后续数据处理的时候fid也可以作为标注用户关系的标识符。
+`fid`是一个人人网用户的唯一标识符。`fid`的重要之处在于在我们之后需要获取相册信息，相册内容，状态内容甚至评论的时候，都需要`fid`来构造相应的url。后续数据处理的时候`fid`也可以作为标注用户关系的标识符。
 
-相比之下，fname就不是特别重要了，它只是给我们一个可以显示的用户名称，比如“张三”，“李四-cool”等。
+相比之下，`fname`就不是特别重要了，它只是给我们一个可以显示的用户名称，比如“张三”，“李四-cool”等。
 
 >to be continued
 
