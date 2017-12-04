@@ -16,9 +16,11 @@ description:
 如前文所述说，在这里实现特定应用的目的是为了在实践中学习python以及它常用的库，如果文中有任何不妥之处，欢迎大家指正。
 
 # 为什么是人人网
+在2017年末研究人人网的数据好像有点太落伍了，不过对于学习练手也还ok。总结起来有以下原因：
+
 1. 微博难爬...
    看了一些关于微博模拟登录的帖子，整个过程非常复杂。况且我也没有很多微博好友，样本数量太少。所以留作之后的项目吧   
-   稍微尝试了下对人人网抓包，发现了一些线索，所以先拿人人网开刀实验。
+   稍微尝试了下对人人网抓包，发现了一些线索，似乎结构比较简单，反爬措施也没多少，所以先拿人人网开刀实验。
 2. 好友数量多
    不仅多，而且实名，相互熟悉。所以后期做数据处理的时候可以方便的看出结论是否合理。（例如通过状态和评论推测好友关系图）
 3. 一代人的集体回忆
@@ -94,8 +96,92 @@ var friends_manage_groups =
 
 相比之下，`fname`就不是特别重要了，它只是给我们一个可以显示的用户名称，比如“张三”，“李四-cool”等。
 
->to be continued
+`large_url/tiny_url`两个url分别对应用户头像的大小分辨率版本。url的形式是http://hdn.xnimg.cn/photos/hdnXXX/yyyymmdd/YYYY/h_large_somestring.jpg 我尝试了一下这些url在没有登录的状态下居然也可以正常访问。这就意味着只要有了好友头像的url，任何人无需登录就可以访问到头像数据。这样做看似暴露用户隐私，然而实际上是为了网页的功能考虑：当未登录用户在网上搜到一个profile想要查看时，人人网展示的页面包含非常有限的内容（其他详细内容需要注册登录之后才能查看），头像就是其中一项。如果之前已经按照上文正确的提取了`friendList.txt`，可以使用以下脚本提取所有好友的头像并保存到head文件夹：
 
+```python
+import json
+import requests
+from contextlib import closing
 
+with open(".\\data\\friendList.txt", 'r', encoding='utf-8') as f:
+    friendList = f.read()
+
+friendListJson = json.loads(friendList)
+friends = friendListJson['data']['friends']
+
+fCount = 0
+for item in friends:
+    fName = item['fname']
+    target = item['large_url']
+
+    print('Getting head of:', fName)
+    print(target)
+
+    with closing(requests.get(url=target, stream=True)) as r:
+        with open('./head/%s.jpg' % fName, 'ab+') as f:
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
+
+    fCount+=1   
+
+    # time.sleep(round(random.random()+0.5))
+
+print('In total:',fCount)
+```
+
+效果差不多就是这样（博主有接近1000个好友）。。。
+![head](/img/2017-12-03/head.png)
+
+`friendList`里的`info`数据存储了好友的家乡，然而人人网的实现非常混乱，我在`info`里面不只看到省份名称，还有学校名称和空值。所以下面的代码过滤了所有是省份的非空值然后排序：
+
+```python
+import json
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+
+matplotlib.rcParams['font.sans-serif']='Microsoft YaHei'
+
+with open(".\\data\\friendList.txt", 'r', encoding='utf-8') as f:
+    friendList = f.read()
+
+friendListJson = json.loads(friendList)
+friends = friendListJson['data']['friends']
+
+home = {}
+for item in friends:
+    #get home info, and filter out all other infomation
+    homeProv = item['info']
+    if(0<len(homeProv.strip())<=3):
+        if homeProv in home:
+            home[homeProv]+=1
+        else:
+            home[homeProv]=1
+
+prov=[]
+cnt=[]
+for key in home.keys():
+    prov.append(key)
+    cnt.append(home[key])
+
+p = np.array(prov)
+c = np.array(cnt)
+
+ind = np.argsort(c)
+ind=ind[::-1]
+
+# pie plot with top 10 home towns
+plt.figure(figsize=(5,5))
+plt.pie(c[ind[0:10]],labels=p[ind[0:10]], autopct=lambda p: '{:.0f}'.format(p * sum(c[ind[0:10]]) / 100))
+plt.show()
+```
+
+结果是我的前十名的好友分布饼图：
+![dist](/img/2017-12-03/pie.png)
+
+# 剧透
+这篇到此为止，通过好友列表能得到的信息并不多，但是它却是通往更多信息的大门。因为我的好友又有他们自己的好友列表，我的好友的好友又有自己的好友列表，子子孙孙无穷尽也。通过这个列表，单点的一个人和其他人连成一个网络图（顶点，边，权重），我们可以探索一个人或者整个社区的人际网络图，并且挖掘更多的信息。我们下po在议！
 
 
