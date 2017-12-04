@@ -35,7 +35,7 @@ description:
 
 使用这个cookie也非常简单，只需要在发送请求的时候添加cookie就可以了：
 
-``` python
+{% highlight python %}
 import requests
 
 myCookie={}
@@ -45,7 +45,7 @@ with open('.\\data\\cookie.txt','r') as f:
         myCookie[name]=value
 
 response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
-```
+{% endhighlight %}
 
 # 获取自己的好友列表
 要抓取自己好友的各种信息，首先要获得自己的好友列表。我们先去【个人主页】->【我的好友】查看自己的好友列表。
