@@ -17,7 +17,7 @@ description:
 
 # 为什么是人人网
 1. 微博难爬...
-   看了一些关于微博模拟登录的帖子，整个过程非常复杂。况且我也没有很多微博好友，所以留作之后的项目吧  
+   看了一些关于微博模拟登录的帖子，整个过程非常复杂。况且我也没有很多微博好友，样本数量太少。所以留作之后的项目吧   
    稍微尝试了下对人人网抓包，发现了一些线索，所以先拿人人网开刀实验。
 2. 好友数量多
    不仅多，而且实名，相互熟悉。所以后期做数据处理的时候可以方便的看出结论是否合理。（例如通过状态和评论推测好友关系图）
@@ -32,6 +32,19 @@ description:
 [![find_cookie](/img/2017-12-03/find_cookie.png)](/img/2017-12-03/find_cookie.png)
 
 如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了“Cookie: ”这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是key1=value1;key2=value2;...这种形式就好。
+
+使用这个cookie也非常简单，只需要在发送请求的时候添加cookie就可以了：
+{% highlight python %}
+import requests
+
+myCookie={}
+with open('.\\data\\cookie.txt','r') as f:
+    for line in f.read().split(';'): #split dict
+        name,value=line.strip().split('=',1)
+        myCookie[name]=value
+
+response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
+{% endhighlight %}
 
 # 获取自己的好友列表
 要抓取自己好友的各种信息，首先要获得自己的好友列表。我们先去【个人主页】->【我的好友】查看自己的好友列表。
@@ -49,23 +62,39 @@ var user={star: true, vip :false};
             "groups" :[{"gname":"组名1","gnum":37},
                     .....],
 
-            "friends": [{"fid":朋友数字ID,"timepos":722,"fgroups":[分组名],"comf":53,"compos":266,"large_url":大头像地址,"tiny_url":"小头像地址","fname":"显示的名字","info":"家乡","pos":1}
+            "friends": [{"fid":朋友数字ID,
+                      "timepos":722,
+                      "fgroups":[分组名],
+                      "comf":53,"compos":266,
+                      "large_url":大头像地址,
+                      "tiny_url":"小头像地址",
+                      "fname":"显示的名字",
+                      "info":"家乡",
+                      "pos":1},
             ......]
         }
 {% endhighlight %}
 
-不难发现，自己的所有好友都在一个javascript对象里。如果像使用python自动获取这个列表，可以使用requests库发一个GET请求，然后使用BeautifulSoup对返回的页面解析，之后获得这个列表。鉴于这个页面一次就返回了所有好友，而不是分批返回，那我就干脆直接copy-paste好友列表到一个文本文件之后再用。
+不难发现，自己的所有好友都在一个javascript对象里。如果想使用python自动获取这个列表，可以使用requests库对http://friend.renren.com/groupsdata发一个GET请求，然后处理返回的js代码片，之后获得这个列表。鉴于这个页面一次就返回了所有好友，而不是分批返回，那我就干脆直接copy-paste好友列表到一个文本文件之后再用。
 
 因为是js对象，自然想到使用json解析。先对这个friendList.txt进行一些预处理：删掉
 var user={star: true, vip :false};   
 var friends_manage_groups =    
-和中间的两行注释,以及文件末尾的分号，让整个文件之剩下{ "data": ...}，这就使它变成了一个无名的js对象，或者说是一个json文件。
+和中间的两行注释,以及文件最末尾的分号，让整个文件只剩下{ "data": ...}，这就使它变成了一个无名的js对象，或者说是一个json文件。
 
 为了测试处理过后的好友列表确实能用json解析器解析，我们把所有内容copy到一个在线的json解析器里看看：
 [![online_parse](/img/2017-12-03/online_parse.png)](/img/2017-12-03/online_parse.png)
 
 确实可以解析！这样我们就可以在python里使用这个完整的好友列表了！
 
+# 进一步挖掘
+从上面的json结构可以得到一些有用的信息：好友的fid(friend identifier?)，显示名字fname(friend name?)，头像图片地址large_url/tiny_url等。
+
+fid是一个人人网用户的唯一标识符。fid的重要之处在于在我们之后需要获取相册信息，相册内容，状态内容甚至评论的时候，都需要fid来构造相应的url。后续数据处理的时候fid也可以作为标注用户关系的标识符。
+
+相比之下，fname就不是特别重要了，它只是给我们一个可以显示的用户名称，比如“张三”，“李四-cool”等。
+
+>to be continued
 
 
 
