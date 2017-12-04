@@ -34,7 +34,9 @@ description:
 如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了“Cookie: ”这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是key1=value1;key2=value2;...这种形式就好。
 
 使用这个cookie也非常简单，只需要在发送请求的时候添加cookie就可以了：
-{% highlight python %}
+
+- useCookie.py:
+``` python
 import requests
 
 myCookie={}
@@ -44,7 +46,7 @@ with open('.\\data\\cookie.txt','r') as f:
         myCookie[name]=value
 
 response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
-{% endhighlight %}
+```
 
 # 获取自己的好友列表
 要抓取自己好友的各种信息，首先要获得自己的好友列表。我们先去【个人主页】->【我的好友】查看自己的好友列表。
@@ -55,24 +57,23 @@ response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
 
 {% highlight javascript %}
 var user={star: true, vip :false};
-    var friends_manage_groups = {
-    //"code" : 0,
-    //"msg" : "操作成功",
-    "data" : {
-            "groups" :[{"gname":"组名1","gnum":37},
-                    .....],
-
-            "friends": [{"fid":朋友数字ID,
-                      "timepos":722,
-                      "fgroups":[分组名],
-                      "comf":53,"compos":266,
-                      "large_url":大头像地址,
-                      "tiny_url":"小头像地址",
-                      "fname":"显示的名字",
-                      "info":"家乡",
-                      "pos":1},
-            ......]
-        }
+var friends_manage_groups = {
+  //"code" : 0,
+  //"msg" : "操作成功",
+  "data" : {"groups" :[{"gname":"组名1","gnum":37},
+                  .....],
+          "friends": [{"fid":朋友数字ID,
+                    "timepos":722,
+                    "fgroups":[分组名],
+                    "comf":53,"compos":266,
+                    "large_url":大头像地址,
+                    "tiny_url":"小头像地址",
+                    "fname":"显示的名字",
+                    "info":"家乡",
+                    "pos":1},
+                    ......]
+      }
+};
 {% endhighlight %}
 
 不难发现，自己的所有好友都在一个javascript对象里。如果想使用python自动获取这个列表，可以使用requests库对http://friend.renren.com/groupsdata发一个GET请求，然后处理返回的js代码片，之后获得这个列表。鉴于这个页面一次就返回了所有好友，而不是分批返回，那我就干脆直接copy-paste好友列表到一个文本文件之后再用。
