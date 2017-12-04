@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 人人网挖坟(1)-使用Fiddler抓包分析网页结构
+title: 人人网挖坟(1)-使用Fiddler抓包分析网页结构并获取好友列表
 categories: [blog ]
 tags: [python,爬虫]
 description:
