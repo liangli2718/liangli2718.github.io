@@ -63,7 +63,7 @@ var friends_manage_groups = {
                   .....],
           "friends": [{"fid":"朋友数字ID",
                     "timepos":722,
-                    "fgroups":["分组名""],
+                    "fgroups":["分组名"],
                     "comf":53,"compos":266,
                     "large_url":"大头像地址",
                     "tiny_url":"小头像地址",
