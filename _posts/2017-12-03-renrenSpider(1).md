@@ -35,8 +35,6 @@ description:
 
 使用这个cookie也非常简单，只需要在发送请求的时候添加cookie就可以了：
 
-- useCookie.py:
-
 ``` python
 import requests
 
