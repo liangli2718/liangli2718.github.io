@@ -95,7 +95,6 @@ layout: default
 <!-- render gitment comment box -->
 <script>
 const gitment = new Gitment({
-  //id: 'empty', // optional
   owner: 'liangli2718',
   repo: 'liangli2718.github.io',
   oauth: {
@@ -103,10 +102,9 @@ const gitment = new Gitment({
     client_secret: '685462df196469e28b308d1d4d35d698a1eea3e6',
   },
   link: location.href.split("?")[0],
+  //id is used to create lable for issue
   id: location.href.split("?")[0]
   //labels: ["gitment",location.href.split("?")[0]]
-  // ...
-  // For more available options, check out the documentation below
 })
 
 gitment.render('gitment_comment')
