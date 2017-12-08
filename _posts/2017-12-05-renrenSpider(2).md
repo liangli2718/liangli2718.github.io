@@ -143,9 +143,10 @@ record1 = {
     'msgID':id,
     'content':content,
     'comment':comment_count,
-    'rootMsgID':rootDoingUserId, #optional
+    'rootMsgID':rootDoingId, #optional
     'rootContent':rootContent, #optional
-    'rootUID':rootDoingUserName #optional
+    'rootUID':rootDoingUserId #optional
+    'rootName':rootDoingUserName
 };
 
 statusList =[
@@ -232,7 +233,11 @@ with open('statusList.dat', 'wb') as f:
 
 最牛逼的一位大神在他的使用生涯中发了8225条状态。当然，可能更精确的的方式应该看发帖频率：
 
-$$StatusRate = TotalNumOfStatus/DaysInBetween$$
+$$
+\begin{align*}
+StatusRate = TotalNumOfStatus/DaysInBetween
+\end{align*}
+$$
 
 >To be continued
 
