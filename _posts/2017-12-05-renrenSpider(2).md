@@ -28,11 +28,11 @@ description:
 
 ![statusPage](/img/2017-12-03/statusPage.png){: .center-image}
 
-在每个好友的这个页面下，可以看到他的所有历史状态。这个页面对应的url是http://status.renren.com/status/v7/`fid`,这里正是用到了上一个post中获取的好友fid。根据上一post的套路，这里自然是使用Fiddler（或者Chrome的Dev Tool）对这个页面的访问进行抓包。
+在每个好友的这个页面下，可以看到他的所有历史状态。这个页面对应的url是http://status.renren.com/status/v7/`fid`,这里正是用到了上一个post中获取的好友fid。根据上一post的套路，这里自然是使用Fiddler（或者Chrome的Dev Tool,这次我用的是Dev Tool）对这个页面的访问进行抓包。
 
 可以看到访问这个页面的时候，页面发出了一个请求http://status.renren.com/GetSomeomeDoingList.do?userId=`fid`&curpage=`pageNumber`，并且返回了一个json object。
 
->add json obj
+![chromeDev](/img/2017-12-03/chromeStatus.png)
 
 可惜的是，不像获取好友列表，这个状态页面是分页的。通过curpage这个url参数选择返回哪一页状态。所以对每个好友，我们需要遍历所有的状态页。如何判断已经遍历完毕所有的页呢？一个简单的方法就是看返回的json里的`doingArray`属性是否为空，如果为空，说明之前的页面已经显示完了所有状态。可以使用以下代码进行遍历：
 
@@ -234,6 +234,8 @@ with open('statusList.dat', 'wb') as f:
 最牛逼的一位大神在他的使用生涯中发了8225条状态。当然，可能更精确的的方式应该看发帖频率：
 
 $$ StatusRate = {TotalNumOfStatus \over DaysInbetween} $$
+
+
 
 >To be continued
 
