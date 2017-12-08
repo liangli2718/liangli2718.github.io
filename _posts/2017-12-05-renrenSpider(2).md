@@ -239,6 +239,12 @@ StatusRate = TotalNumOfStatus/DaysInBetween
 \end{align*}
 $$
 
+\begin{foo}StatusRate = TotalNumOfStatus/DaysInBetween\end{foo}
+
+$$\begin{foo}StatusRate = TotalNumOfStatus/DaysInBetween\end{foo}$$
+
+$$\begin{foo}StatusRate(x)\end{foo}$$
+
 >To be continued
 
 
