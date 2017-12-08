@@ -235,7 +235,9 @@ with open('statusList.dat', 'wb') as f:
 
 $$ StatusRate = {TotalNumOfStatus \over DaysInbetween} $$
 
+![statusRate](/img/2017-12-03/statusRate.png){: .center-image}
 
+前十名有六个来自总状态Top10,充分说明了：话多的人发状态频率也快。。。（可能因为忍不了不说话吧）。令人惊讶的是：Top 10里有8个男生。
 
 >To be continued
 
