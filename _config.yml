@@ -3,11 +3,10 @@ title: heheda
 header-img: "img/index-banner.jpg"
 tagline:
 description:  
-# baseurl: https://liangli2718.github.io
 # url: "http://localhost:4000"
-
 url: https://liangli2718.github.io
 enforce_ssl: https://liangli2718.github.io
+
 
 # About/contact
 owner: 
@@ -25,6 +24,7 @@ github_username: liangli2718
 # facebook_username:  
 # weibo_username:  
 # zhihu_username:  
+
 
 # Build settings  
 # use Github Flavored Markdown !important  
@@ -57,19 +57,10 @@ defaults:
       header-img: "img/fantasy.jpg" # We don't want posts without a header image, that whould mean white on white
 
 
-# # Comments 
-# comments :
-#   provider :
-#   duoshuo :
-#     short_name :
-#   disqus :
-#       short_name :
-
 # Analytics and webmaster tools stuff goes here
-google_analytics:
-# UA-66863061-1
-google_verify:
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
+# google_analytics:
+# google_verify:
+# bing_verify:
+
 
 # Links to include in footer navigation
