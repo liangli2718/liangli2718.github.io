@@ -245,6 +245,8 @@ $$\begin{foo}StatusRate = TotalNumOfStatus/DaysInBetween\end{foo}$$
 
 $$\begin{foo}StatusRate(x)\end{foo}$$
 
+$$StatusRate(x)$$
+
 >To be continued
 
 
