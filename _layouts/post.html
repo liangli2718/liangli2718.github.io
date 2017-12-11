@@ -2,106 +2,114 @@
 layout: default
 ---
 
-<!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
     }
 </style>
+
+<!-- Post Header -->
 <header class="intro-header" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="Tags">
-                        {% for tag in page.tags %}
-                        <a class="tag" href="/tags#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <!-- insert tags on the page -->
+          <div class="Tags">
+              {% for tag in page.tags %}
+              <a class="tag" href="/tags#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+              {% endfor %}
+          </div>
+
+          <h1>{{ page.title }}</h1>
+
+          {% if page.subtitle %}
+            <h2 class="subheading">{{ page.subtitle }}</h2>
+          {% endif %}
+
+          <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!-- gitment css -->
-    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-    <style>
-      center-image{
-          margin: 0 auto;
-          display: block;
-      }
-    </style>
+  <!-- gitment css -->
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 
-    <!-- mathjax -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <!-- center image style to be used in post -->
+  <style>
+    center-image{
+        margin: 0 auto;
+        display: block;
+    }
+  </style>
 
+  <!-- mathjax -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 </header>
 
 <!-- Post Content -->
 <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
 
-                {{ content }}
+        {{ content }}
 
-                <hr>
-                  <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International License</a>. 欢迎转载，分享，使用本文章的部分或全部。但在使用时必须注明来源为本页网址。禁止任何未授权商业使用。
-                <hr>
+        <hr>
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0 International License</a>. 欢迎转载，分享，使用本文章的部分或全部。但在使用时必须注明来源为本页网址。禁止任何未授权商业使用。
+        <hr>
 
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                
-                <!-- gitment comment box div -->
-                <div id="gitment_comment"></div>
-            </div>
-        </div>
+        <ul class="pager">
+            {% if page.previous.url %}
+            <li class="previous">
+                <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
+            </li>
+            {% endif %}
+
+            {% if page.next.url %}
+            <li class="next">
+                <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
+            </li>
+            {% endif %}
+        </ul>
+        
+        <!-- gitment comment box div -->
+        <div id="gitment_comment"></div>
+      </div>
     </div>
+  </div>
 </article>
 
 
 
 <!-- async load function -->
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
+  function async(u, c) {
+    var d = document, t = 'script',
+        o = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
 </script>
 
 <!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
 <script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading');
-    })
+  async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+      anchors.options = {
+        visible: 'always',
+        placement: 'right',
+        icon: '#'
+      };
+      anchors.add().remove('.intro-header h1').remove('.subheading');
+  })
 </script>
 
 <!-- gitment js -->
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
 <!-- render gitment comment box -->
 <script>
 const gitment = new Gitment({
