@@ -35,8 +35,10 @@ kramdown:
 highlighter: rouge
 
 plugins: 
-- jekyll-gallery-generator
-- jekyll-paginate
+  - jekyll-gallery-generator
+  - jekyll-paginate
+  - jekyll-seo-tag
+
 permalink: none
 paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
