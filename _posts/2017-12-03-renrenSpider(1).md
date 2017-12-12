@@ -26,13 +26,13 @@ description:
 3. 一代人的集体回忆
    如果你懂说明你老了...
 
-   ![xiaonei](/img/2017-12-03/xiaonei_logo.gif){: .center-image}
+   ![xiaonei](https://liangli2718.github.io/img/2017-12-03/xiaonei_logo.gif){: .center-image}
 
 # 模拟登陆/使用Cookie
 对于人人网来说，要获取数据，首先要合法登陆。当然可以先抓包分析普通登陆的整个过程，然后使用python发送http request模拟这个过程进行登录，不过登录部分不是重点，所以我们直接使用合法登陆产生的cookie对人人网进行访问。
 用自己的账号登陆人人网，并用Fiddler对整个过程抓包（也可以使用Chrome自带的Developer Tool)，可以得到一个cookie。有了cookie我们就可以在一段时间内免登录访问人人的页面了。
 
-[![find_cookie](/img/2017-12-03/find_cookie.png)](/img/2017-12-03/find_cookie.png)
+[![find_cookie](https://liangli2718.github.io/img/2017-12-03/find_cookie.png)](https://liangli2718.github.io/img/2017-12-03/find_cookie.png)
 
 如上图，登录人人的时候浏览器对www.renren.com/home发出了http请求，右边栏里的request header显示了使用的cookie。右键Cookie选择copy header，然后粘贴到一个文本文件里保存就可以了。注意copy的时候Fiddler自己添加了`“Cookie: ”`这样的内容。这并不是cookie的一部分，删掉这个内容，确保保存的cookie是`key1=value1;key2=value2;...`这种形式就好。
 
@@ -53,7 +53,7 @@ response = requests.get(url='http://www.renren.com/home', cookies=myCookie)
 # 获取自己的好友列表
 要抓取自己好友的各种信息，首先要获得自己的好友列表。我们先去【个人主页】->【我的好友】查看自己的好友列表。
 使用Fiddler对这个页面进行抓包，获得以下内容
-[![friendList](/img/2017-12-03/friendList.png)](/img/2017-12-03/friendList.png)
+[![friendList](https://liangli2718.github.io/img/2017-12-03/friendList.png)](https://liangli2718.github.io/img/2017-12-03/friendList.png)
 
 可以看到浏览器对friend.renren.com/managefriends发出了请求，之后跳转到friend.renren.com/groupsdata。`groupsdata`其实一个javascript代码片段，我们把这个数据保存为`friendList.txt`
 
@@ -86,7 +86,7 @@ var friends_manage_groups =
 和中间的两行注释,以及文件最末尾的分号，让整个文件只剩下{ "data": ...}，这就使它变成了一个无名的js对象，或者说是一个json文件。
 
 为了测试处理过后的好友列表确实能用json解析器解析，我们把所有内容copy到一个在线的json解析器里看看：
-[![online_parse](/img/2017-12-03/online_parse.png)](/img/2017-12-03/online_parse.png)
+[![online_parse](https://liangli2718.github.io/img/2017-12-03/online_parse.png)](https://liangli2718.github.io/img/2017-12-03/online_parse.png)
 
 确实可以解析！这样我们就可以在python里使用这个完整的好友列表了！
 
@@ -133,7 +133,7 @@ print('In total:',fCount)
 ```
 
 效果差不多就是这样（博主有接近1000个好友）。。。
-![head](/img/2017-12-03/head.png)
+![head](https://liangli2718.github.io/img/2017-12-03/head.png)
 
 `friendList`里的`info`数据存储了好友的家乡，然而人人网的实现非常混乱，我在`info`里面不只看到省份名称，还有学校名称和空值。所以下面的代码过滤了所有是省份的非空值然后排序：
 
@@ -181,7 +181,7 @@ plt.show()
 
 结果是我的前十名的好友分布饼图：
 
-![dist](/img/2017-12-03/pie.png){: .center-image}
+![dist](https://liangli2718.github.io/img/2017-12-03/pie.png){: .center-image}
 
 # 剧透
 这篇到此为止，通过好友列表能得到的信息并不多，但是它却是通往更多信息的大门。因为我的好友又有他们自己的好友列表，我的好友的好友又有自己的好友列表，子子孙孙无穷尽也。通过这个列表，单点的一个人和其他人连成一个网络图（顶点，边，权重），我们可以探索一个人或者整个社区的人际网络图，并且挖掘更多的信息。我们之后的几个post在议！
