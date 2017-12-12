@@ -26,7 +26,7 @@ description:
 
 在人人网中，每个用户都会有“状态”这一个页面：
 
-![statusPage](/img/2017-12-03/statusPage.png){: .center-image}
+![statusPage]({site.url}/img/2017-12-03/statusPage.png){: .center-image}
 
 在每个好友的这个页面下，可以看到他的所有历史状态。这个页面对应的url是http://status.renren.com/status/v7/`fid`,这里正是用到了上一个post中获取的好友fid。根据上一post的套路，这里自然是使用Fiddler（或者Chrome的Dev Tool,这次我用的是Dev Tool）对这个页面的访问进行抓包。
 
