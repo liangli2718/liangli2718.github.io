@@ -26,13 +26,13 @@ description:
 
 在人人网中，每个用户都会有“状态”这一个页面：
 
-![statusPage]({site.url}/img/2017-12-03/statusPage.png){: .center-image}
+![statusPage](https://liangli2718.github.io/img/2017-12-03/statusPage.png){: .center-image}
 
 在每个好友的这个页面下，可以看到他的所有历史状态。这个页面对应的url是http://status.renren.com/status/v7/`fid`,这里正是用到了上一个post中获取的好友fid。根据上一post的套路，这里自然是使用Fiddler（或者Chrome的Dev Tool,这次我用的是Dev Tool）对这个页面的访问进行抓包。
 
 可以看到访问这个页面的时候，页面发出了一个请求http://status.renren.com/GetSomeomeDoingList.do?userId=`fid`&curpage=`pageNumber`，并且返回了一个json object。
 
-![chromeDev](/img/2017-12-03/chromeStatus.png)
+![chromeDev](https://liangli2718.github.io/img/2017-12-03/chromeStatus.png)
 
 可惜的是，不像获取好友列表，这个状态页面是分页的。通过curpage这个url参数选择返回哪一页状态。所以对每个好友，我们需要遍历所有的状态页。如何判断已经遍历完毕所有的页呢？一个简单的方法就是看返回的json里的`doingArray`属性是否为空，如果为空，说明之前的页面已经显示完了所有状态。可以使用以下代码进行遍历：
 
@@ -129,7 +129,7 @@ print('In total:',fCount)
 
 我们来看一下存储的json的内容：
 
-![statusParse](/img/2017-12-03/statusJson.png){: .center-image}
+![statusParse](https://liangli2718.github.io/img/2017-12-03/statusJson.png){: .center-image}
 
 这个json object里面有几个属性，最重要的当然是这个`doingArray`。他存储了用户的status，其中大部分数据的作用根据命名可以很容易的理解。特殊情况是当这个状态是转自别人的时候，会多出`rootDoingId`,`rootContent`，`rootDoingUserName`，`rootDoingUserId`这几个属性来标识这个状态的最初出处和内容。
 
@@ -229,25 +229,25 @@ with open('statusList.dat', 'wb') as f:
 # 状态总体分析
 首先，我们看看谁话最多。。。前十名的状态总数是这样的:
 
-![top10](/img/2017-12-03/top10.png){: .center-image}
+![top10](https://liangli2718.github.io/img/2017-12-03/top10.png){: .center-image}
 
 最牛逼的一位大神在他的使用生涯中发了8225条状态。当然，可能更精确的的方式应该看发帖频率：
 
 $$ StatusRate = {TotalNumOfStatus \over DaysInbetween} $$
 
-![statusRate](/img/2017-12-03/statusRate.png){: .center-image}
+![statusRate](https://liangli2718.github.io/img/2017-12-03/statusRate.png){: .center-image}
 
 前十名有六个来自总状态Top10,充分说明了：话多的人发状态频率也快。。。（可能因为忍不了不说话吧）。令人惊讶的是：Top 10里有8个男生。
 
 之后我们来看看用户状态的时间分布：
 
-![timeDist](/img/2017-12-03/timeDist.png){: .center-image}
+![timeDist](https://liangli2718.github.io/img/2017-12-03/timeDist.png){: .center-image}
 
 这个分布清楚的展现的人人网的兴衰变化（或者说是博主这一代大学生使用人人网的变化），2008/2009年指数（其实更接近线性）的使用增长，2011年底达到峰值，之后就接近完美的指数下降。2011年是这个图中的一个重要年份：博主这一代（最后一届80后）大学生毕业，新浪微博用户过亿。一旦毕业工作之后，大量的朋友都离开了人人网。
 
 一个有趣的地方是2010中的某个月用户状态量激增，只看2010年的分布如下图：
 
-![timeDist](/img/2017-12-03/dist2010.png){: .center-image}
+![timeDist](https://liangli2718.github.io/img/2017-12-03/dist2010.png){: .center-image}
 
 大概是六/七月的时候。博主已经不记得那时候发生了什么了，随机打印了200条六月的状态：
 
@@ -261,7 +261,7 @@ $$ StatusRate = {TotalNumOfStatus \over DaysInbetween} $$
 
 下面我们还可以看一下所有状态在一天24小时内的分布情况：
 
-![timeDist](/img/2017-12-03/dayDist.png){: .center-image}
+![timeDist](https://liangli2718.github.io/img/2017-12-03/dayDist.png){: .center-image}
 
 全是夜猫子。。。
 
