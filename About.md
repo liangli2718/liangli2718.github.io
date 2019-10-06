@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About"
-description: "People get old when they stop exploring."
+description: "1+1>>2"
 header-img: "img/about.jpg"
 ---
 
@@ -9,5 +9,5 @@ header-img: "img/about.jpg"
 
 Coming soon...
 
-![team-back](https://liangli2718.github.io/img/about-team-back.jpg){: .center-image}
+![team-back](https://liangli2718.github.io/img/about-team-front.jpg){: .center-image}
 
