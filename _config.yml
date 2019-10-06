@@ -10,7 +10,7 @@ enforce_ssl: https://liangli2718.github.io
 
 # About/contact
 owner: 
-  name: Liang Li
+  name: AiCU
   email: liangli2718@gmail.com
   bio:
 
@@ -55,7 +55,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "Liang"
+      author: "AiCU Team"
       header-img: "img/face.jpg" # We don't want posts without a header image, that whould mean white on white
 
 
